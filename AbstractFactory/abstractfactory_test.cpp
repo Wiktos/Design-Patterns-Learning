@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "class_hier_factories.h"
 
 using namespace std;

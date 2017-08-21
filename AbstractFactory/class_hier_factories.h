@@ -7,6 +7,8 @@ public:
 	virtual CarEngine* createEngine() = 0;
 	virtual CarDoor* createDoor() = 0;
 	virtual CarLamp* createLamp() = 0;
+	virtual ~AbstractCarModelFactory()
+	{}
 };
 
 class OpelFactory : public AbstractCarModelFactory

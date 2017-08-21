@@ -1,8 +1,13 @@
 #pragma once
+#include <iostream>
+#include <string>
+
 class CarEngine
 {
 public:
 	virtual std::string to_string() = 0;
+	virtual ~CarEngine()
+	{}
 };
 
 class BMWEngine : public CarEngine
@@ -36,6 +41,8 @@ class CarDoor
 {
 public:
 	virtual std::string to_string() = 0;
+	virtual ~CarDoor()
+	{}
 };
 
 class BMWDoor : public CarDoor
@@ -69,6 +76,8 @@ class CarLamp
 {
 public:
 	virtual std::string to_string() = 0;
+	virtual ~CarLamp()
+	{}
 };
 
 class BMWLamp : public CarLamp
