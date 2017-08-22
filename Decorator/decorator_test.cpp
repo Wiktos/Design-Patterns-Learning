@@ -3,16 +3,21 @@
 
 using namespace std;
 
-static inline Coffee* MilkedAndSugaredCoffee()
+Coffee* MilkedAndSugaredCoffee()
 {
-	return new MilkedCoffee(new SugaredCoffee(new SimpleCoffee()));
+	Coffee* coffee = new SimpleCoffee;
+	Coffee* milked = new MilkedCoffee(coffee);
+	Coffee* milkedSugared = new SugaredCoffee(milked);
+	return milkedSugared;
 }
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	Coffee* myDreamCoffee = MilkedAndSugaredCoffee();
-
 	cout << myDreamCoffee->getIngredients() << endl;
-
+	
+	delete myDreamCoffee; 
 	return 0;
 }

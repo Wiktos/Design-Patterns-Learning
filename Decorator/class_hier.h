@@ -5,6 +5,8 @@ class Coffee
 {
 public:
 	virtual std::string getIngredients() = 0;
+	virtual ~Coffee()
+	{}
 };
 
 class SimpleCoffee : public Coffee
@@ -26,12 +28,17 @@ public:
 	{
 		return coffee->getIngredients();
 	}
+	virtual ~CoffeeDecorator()
+	{
+		delete coffee;
+	}
 };
 
 class MilkedCoffee : public CoffeeDecorator
 {
 public:
-	using CoffeeDecorator::CoffeeDecorator;
+	MilkedCoffee(Coffee* coffee) : CoffeeDecorator(coffee)
+	{}
 	virtual std::string getIngredients()
 	{
 		return CoffeeDecorator::getIngredients() + "Milk ";
@@ -41,7 +48,8 @@ public:
 class SugaredCoffee : public CoffeeDecorator
 {
 public:
-	using CoffeeDecorator::CoffeeDecorator;
+	SugaredCoffee(Coffee* coffee) : CoffeeDecorator(coffee)
+	{}
 	virtual std::string getIngredients()
 	{
 		return CoffeeDecorator::getIngredients() + "Sugar ";
