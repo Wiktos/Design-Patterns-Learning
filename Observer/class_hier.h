@@ -38,8 +38,8 @@ public:
 AbstractPatient::~AbstractPatient()
 {
 	std::list<AbstractMeasurerObs*>::iterator iter = obsDevices.begin();
-		for( ;iter != obsDevices.end() ; iter++)
-			(*iter)->update(this);
+	for (; iter != obsDevices.end(); iter++)
+		delete *iter;
 }
 
 class Patient : public AbstractPatient
